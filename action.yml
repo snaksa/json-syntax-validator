@@ -10,8 +10,7 @@ runs:
   steps:
     - run: |
         echo paths value: ${{ inputs.paths }}
-        list=($(echo ${{ inputs.paths }} | tr " " "\n"))
-        echo "list" $list
+        list=($(echo ${{ inputs.paths }} | tr "," "\n"))
         invalidFiles=0
         for path in ${list[@]}
         do
@@ -21,6 +20,7 @@ runs:
             then
                 echo $error
                 invalidFiles=$((invalidFiles+1))
+                echo "NOT VALID"
             else 
                 echo "VALID"
             fi
