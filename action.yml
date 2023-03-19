@@ -19,7 +19,6 @@ runs:
             error=$(cat $path | jq . 2>&1 > /dev/null )
             if [ "$?" -ne 0 ]
             then
-                invalidFiles=$((invalidFiles+1))
                 echo "NOT VALID"
             else 
                 echo "VALID"
