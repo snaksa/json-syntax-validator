@@ -16,7 +16,7 @@ runs:
         do
             echo "Validating file: "$path
             cat $path
-            error=$(cat $path | jq . 2>&1 > /dev/null )
+            error=$(cat $path | jq .)
             if [ "$?" -ne 0 ]
             then
                 echo "NOT VALID"
