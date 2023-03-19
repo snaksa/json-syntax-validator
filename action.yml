@@ -16,7 +16,6 @@ runs:
         pwd
         for path in ${list[@]}
         do
-            echo "Validating file: "$path
             error=$(cat $path | jq . 2>&1 > /dev/null )
             echo "after command"
             if [ "$?" -ne 0 ]
