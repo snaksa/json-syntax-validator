@@ -1,0 +1,31 @@
+name: 'JSON Syntax Validator'
+author: 'Sinan Shaban'
+description: 'This action validates the syntax of a JSON file'
+inputs:
+  paths:
+    description: Comma separated list of files or directories
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo paths: ${{ inputs.paths }}
+        list=($(echo ${{ inputs.paths }} | tr "," "\n"))
+        invalidFiles=0
+        for path in ${list[@]}
+        do
+            echo "Validating file: "$path
+            error=$(cat $path | jq . 1>/dev/null )
+            if [ "$?" -ne 0 ]
+            then
+                echo $error
+                invalidFiles=${invalidFiles+1}
+            else 
+                echo "VALID\n"
+            fi
+        done
+
+        echo "INVALID FILES: "$invalidFiles
+
+        exit $invalidFiles
+      shell: bash
