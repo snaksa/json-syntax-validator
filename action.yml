@@ -12,12 +12,11 @@ runs:
         echo paths value: ${{ inputs.paths }}
         list=($(echo ${{ inputs.paths }} | tr "," "\n"))
         invalidFiles=0
-        ls
-        pwd
         for path in ${list[@]}
         do
+            echo "Validating file: "$path
+            cat $path
             error=$(cat $path | jq . 2>&1 > /dev/null )
-            echo "after command"
             if [ "$?" -ne 0 ]
             then
                 invalidFiles=$((invalidFiles+1))
