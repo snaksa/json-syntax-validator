@@ -27,5 +27,5 @@ runs:
 
         echo "INVALID FILES: "$invalidFiles
 
-        exit $invalidFiles
+        exit 1
       shell: bash
