@@ -21,7 +21,7 @@ runs:
                 echo $error
                 invalidFiles=${invalidFiles+1}
             else 
-                echo "VALID\n"
+                echo "VALID"
             fi
         done
 
