@@ -16,13 +16,8 @@ runs:
         do
             echo "Validating file: "$path
             cat $path
-            error=$(cat $path | jq .)
-            if [ "$?" -ne 0 ]
-            then
-                echo "NOT VALID"
-            else 
-                echo "VALID"
-            fi
+            cat $path | jq .
+            
         done
 
         echo "INVALID FILES: "$invalidFiles
