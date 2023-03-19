@@ -16,6 +16,8 @@ runs:
         do
             echo "Validating file: "$path
             cat $path
+            echo "one more line"
+            cat $path | jq .
             
         done
 
