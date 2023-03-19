@@ -15,10 +15,14 @@ runs:
         for path in ${list[@]}
         do
             echo "Validating file: "$path
-            cat $path
-            echo "one more line"
-            cat $path | jq .
-            
+            cat $path | jq . 2>&1 > /dev/null
+            if [ "$?" -ne 0 ]
+            then
+                invalidFiles=$((invalidFiles+1))
+                echo "NOT VALID"
+            else 
+                echo "VALID"
+            fi
         done
 
         echo "INVALID FILES: "$invalidFiles
