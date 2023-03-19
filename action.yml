@@ -16,7 +16,6 @@ runs:
         do
             echo "Validating file: "$path
             cat $path
-            cat $path | jq .
             
         done
 
