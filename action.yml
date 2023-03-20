@@ -18,7 +18,9 @@ runs:
             cat $path | jq . 1>/dev/null
             if [ "$?" -ne 0 ]
             then
-                invalidFiles=$((invalidFiles+1))
+              invalidFiles=$((invalidFiles+1))
+            else
+              echo ">>>Valid"
             fi
         done
 
