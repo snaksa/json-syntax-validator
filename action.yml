@@ -9,7 +9,6 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        set +x
         echo paths value: ${{ inputs.paths }}
         list=($(echo ${{ inputs.paths }} | tr "," "\n"))
         invalidFiles=0
@@ -31,4 +30,4 @@ runs:
           echo "INVALID FILES: "$invalidFiles
           exit 1
         fi
-      shell: bash
+      shell: bash {0}
