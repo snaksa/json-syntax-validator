@@ -14,8 +14,9 @@ runs:
         invalidFiles=0
         for path in ${list[@]}
         do
-            echo "Validating file: "$path
+            echo "Validating file:" $path
             cat $path | jq . 1>/dev/null
+
             if [ "$?" -ne 0 ]
             then
               invalidFiles=$((invalidFiles+1))
@@ -23,12 +24,13 @@ runs:
             else
               echo ">>>Valid"
             fi
+
             echo -e "\n"
         done
 
         if [ $invalidFiles -gt 0 ]
         then
-          echo "INVALID FILES: "$invalidFiles
+          echo "Invalid files:" $invalidFiles
           exit 1
         fi
       shell: bash
