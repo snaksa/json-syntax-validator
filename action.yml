@@ -19,9 +19,11 @@ runs:
             if [ "$?" -ne 0 ]
             then
               invalidFiles=$((invalidFiles+1))
+              echo ">>>Failed"
             else
               echo ">>>Valid"
             fi
+            echo '\n'
         done
 
         if [ $invalidFiles -gt 0 ]
