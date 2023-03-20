@@ -16,11 +16,12 @@ runs:
         for path in ${list[@]}
         do
             echo "Validating file: "$path
-            cat $path | jq . 2>&1
+            error=$(cat $path | jq .)
             if [ "$?" -ne 0 ]
             then
                 invalidFiles=$((invalidFiles+1))
                 echo "NOT VALID"
+                echo $error
             else 
                 echo "VALID"
             fi
