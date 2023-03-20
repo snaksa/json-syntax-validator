@@ -23,7 +23,7 @@ runs:
             else
               echo ">>>Valid"
             fi
-            echo '\n'
+            echo -e "\n"
         done
 
         if [ $invalidFiles -gt 0 ]
