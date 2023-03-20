@@ -25,7 +25,9 @@ runs:
             fi
         done
 
-        echo "INVALID FILES: "$invalidFiles
-
-        exit 1
+        if [ $invalidFiles -gt 0 ]
+        then
+          echo "INVALID FILES: "$invalidFiles
+          exit 1
+        fi
       shell: bash
