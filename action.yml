@@ -11,8 +11,9 @@ runs:
   steps:
     - run: |
         set +e
+        IFS=',' read -ra files <<< "${{ inputs.paths }}"
         invalidFiles=0
-        for file in "${{ inputs.paths }}"
+        for file in "${files[@]}"
         do
             echo "Validating file:" $file
             jq empty $file
