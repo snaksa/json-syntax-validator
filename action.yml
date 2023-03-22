@@ -11,7 +11,6 @@ runs:
   steps:
     - run: |
         set +e
-        IFS=','
         invalidFiles=0
         for file in "${{ inputs.paths }}"
         do
