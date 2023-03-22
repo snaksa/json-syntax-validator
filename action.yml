@@ -11,7 +11,7 @@ runs:
   steps:
     - run: |
         set +e
-        IFS=',' read -ra files <<< "${{ inputs.paths }}"
+        files=($(echo ${{ inputs.paths }} | tr "," "\n"))
         invalidFiles=0
         for file in "${files[@]}"
         do
