@@ -13,7 +13,7 @@ runs:
         set +e
         IFS=','
         invalidFiles=0
-        for file in "${{ inputs.filenames }}"
+        for file in "${{ inputs.paths }}"
         do
             echo "Validating file:" $file
             jq empty $file
