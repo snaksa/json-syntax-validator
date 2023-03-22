@@ -3,32 +3,39 @@ author: 'Sinan Shaban'
 description: 'This action validates the syntax of a JSON file'
 inputs:
   paths:
-    description: Comma separated list of files or directories
+    description: Comma separated list of files
     required: true
-    type: string[]
 runs:
   using: 'composite'
   steps:
     - run: |
+        # do not stop the script if an error during file validation occurs
         set +e
+
+        # split the input paths by commas ot new lines
         files=($(echo ${{ inputs.paths }} | tr "," "\n"))
+
+        # count of the invalid files
         invalidFiles=0
+
         for file in "${files[@]}"
         do
-            echo "Validating file:" $file
-            jq empty $file
+          echo "Validating file:" $file
+          jq empty $file
 
-            if [ "$?" -ne 0 ]
-            then
-              invalidFiles=$((invalidFiles+1))
-              echo ">>>Failed"
-            else
-              echo ">>>Valid"
-            fi
+          if [ "$?" -ne 0 ]
+          then
+          # if the JSON content of the file is not valid increase the counter
+            invalidFiles=$((invalidFiles+1))
+            echo ">>>Failed"
+          else
+            echo ">>>Valid"
+          fi
 
-            echo -e "\n"
+          echo -e "\n"
         done
 
+        # if there are any invalid files throw an error
         if [ $invalidFiles -gt 0 ]
         then
           echo "Invalid files:" $invalidFiles
