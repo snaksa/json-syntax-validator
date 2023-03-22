@@ -23,9 +23,9 @@ runs:
           echo "Validating file:" $file
           jq empty $file
 
+          # if the JSON content of the file is not valid increase the counter
           if [ "$?" -ne 0 ]
           then
-          # if the JSON content of the file is not valid increase the counter
             invalidFiles=$((invalidFiles+1))
             echo ">>>Failed"
           else
@@ -38,7 +38,7 @@ runs:
         # if there are any invalid files throw an error
         if [ $invalidFiles -gt 0 ]
         then
-          echo "Invalid files:" $invalidFiles
+          echo "Number of invalid files:" $invalidFiles
           exit 1
         fi
       shell: bash
