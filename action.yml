@@ -5,17 +5,17 @@ inputs:
   paths:
     description: Comma separated list of files or directories
     required: true
+    type: string[]
 runs:
   using: 'composite'
   steps:
     - run: |
         set +e
-        list=($(echo ${{ inputs.paths }} | tr "," "\n"))
         invalidFiles=0
-        for path in ${list[@]}
+        for file in "${{ inputs.filenames }}"
         do
-            echo "Validating file:" $path
-            cat $path | jq . 1>/dev/null
+            echo "Validating file:" $file
+            jq empty $file
 
             if [ "$?" -ne 0 ]
             then
