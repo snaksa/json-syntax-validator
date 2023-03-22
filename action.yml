@@ -12,7 +12,7 @@ runs:
         # do not stop the script if an error during file validation occurs
         set +e
 
-        # split the input paths by commas ot new lines
+        # split the input paths by commas or new lines
         files=($(echo ${{ inputs.paths }} | tr "," "\n"))
 
         # count of the invalid files
