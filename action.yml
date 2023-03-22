@@ -1,6 +1,6 @@
 name: 'JSON Syntax Validator'
 author: 'Sinan Shaban'
-description: 'This action validates the syntax of a JSON file'
+description: 'This action validates the syntax of a list of JSON files'
 inputs:
   paths:
     description: Comma separated list of files
