@@ -21,7 +21,7 @@ name: Validate JSON files
 on: [pull_request]
 
 jobs:
-  hello_world_job:
+  json_validator_job:
     runs-on: ubuntu-latest
     name: Validate JSON sytax
     steps:
