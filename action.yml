@@ -1,12 +1,12 @@
-name: 'JSON Syntax Validator'
-author: 'Sinan Shaban'
-description: 'This action validates the syntax of a list of JSON files'
+name: JSON Syntax Validator
+author: Sinan Shaban
+description: Validate the syntax of a list of JSON files
 inputs:
   paths:
     description: Comma separated list of files
     required: true
 runs:
-  using: 'composite'
+  using: composite
   steps:
     - run: |
         # do not stop the script if an error during file validation occurs
