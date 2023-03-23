@@ -23,7 +23,7 @@ on: [pull_request]
 jobs:
   json_validator_job:
     runs-on: ubuntu-latest
-    name: Validate JSON sytax
+    name: Validate JSON syntax
     steps:
       - uses: actions/checkout@v3
       - uses: snaksa/json-syntax-validator@main
